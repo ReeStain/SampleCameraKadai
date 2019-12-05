@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fna-Yi-jZu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="5CF-EZ-hTJ">
+            <objects>
+                <viewController id="dvr-r6-nep" customClass="MainViewController" customModule="SampleCamera" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rL0-qU-clE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7qf-DL-9zR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写真が読み込まれていません。右上のボタンを押して、写真を撮影するか、カメラロールから写真を読み込んでください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3a-5S-r2l">
+                                <rect key="frame" x="16" y="303" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p7g-oB-IE6" firstAttribute="bottom" secondItem="7qf-DL-9zR" secondAttribute="bottom" id="0nM-sn-cHa"/>
+                            <constraint firstItem="7qf-DL-9zR" firstAttribute="leading" secondItem="p7g-oB-IE6" secondAttribute="leading" id="1XL-BQ-Mtf"/>
+                            <constraint firstItem="N3a-5S-r2l" firstAttribute="centerY" secondItem="rL0-qU-clE" secondAttribute="centerY" id="Cvu-ez-lGI"/>
+                            <constraint firstItem="p7g-oB-IE6" firstAttribute="trailing" secondItem="7qf-DL-9zR" secondAttribute="trailing" id="CyP-Ut-X4L"/>
+                            <constraint firstItem="N3a-5S-r2l" firstAttribute="leading" secondItem="p7g-oB-IE6" secondAttribute="leading" constant="16" id="QwJ-8k-1li"/>
+                            <constraint firstItem="7qf-DL-9zR" firstAttribute="top" secondItem="p7g-oB-IE6" secondAttribute="top" id="VTe-7q-D05"/>
+                            <constraint firstItem="p7g-oB-IE6" firstAttribute="trailing" secondItem="N3a-5S-r2l" secondAttribute="trailing" constant="16" id="rVz-Pr-CO0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p7g-oB-IE6"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="done" systemItem="save" id="F1D-wV-6tI">
+                            <connections>
+                                <action selector="onSaveButtonTapped:" destination="dvr-r6-nep" id="Tiu-6R-uXD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2Sc-OD-8Sr"/>
+                        <barButtonItem style="done" systemItem="edit" id="LRS-Th-Yik">
+                            <connections>
+                                <action selector="onEditButtonTapped:" destination="dvr-r6-nep" id="pTo-gg-Tai"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="1lZ-eW-Chq">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="camera" id="Gsi-D8-MSm">
+                            <connections>
+                                <action selector="onCameraButtonTapped:" destination="dvr-r6-nep" id="JoW-Ql-cwZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="myImageView" destination="7qf-DL-9zR" id="HP1-Ma-Wd3"/>
+                        <outlet property="myLabel" destination="N3a-5S-r2l" id="F5W-XX-wxj"/>
+                        <segue destination="Vbj-eC-V5b" kind="show" identifier="MoveFilterListView" id="GY2-sc-Jxf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byz-WT-oR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="149.77511244377811"/>
+        </scene>
+        <!--Filter List View Controller-->
+        <scene sceneID="9mS-PB-nFx">
+            <objects>
+                <tableViewController id="Vbj-eC-V5b" customClass="FilterListViewController" customModule="SampleCamera" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cOH-zn-SQP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="RV2-TV-p3A">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RV2-TV-p3A" id="lz7-yu-fYH" customClass="Cell" customModule="SampleCamera">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Vbj-eC-V5b" id="NFP-bl-p9s"/>
+                            <outlet property="delegate" destination="Vbj-eC-V5b" id="2pA-UN-Lu9"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXU-Pm-aSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="150"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QQf-r7-BVI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="fna-Yi-jZu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o3b-ak-g48">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u16-92-Mev">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="dvr-r6-nep" kind="relationship" relationship="rootViewController" id="AKu-dN-mSz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Dy-V6-9oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="149.77511244377811"/>
+        </scene>
+    </scenes>
+</document>
